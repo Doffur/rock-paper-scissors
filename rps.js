@@ -7,9 +7,9 @@ function playRound(playerSelection,computerSelection){
     switch(pS){
         case "rock":
             if(cS == "scissors"){
-                return "You Win!!";
+                return "You Win!! Rock Beats Scissors";
             }else if(cS == "paper"){
-                return "Computer Wins!" ;
+                return "Computer Wins! Paper Beats Rock" ;
             }else{
                 return "Draw!";
             }
@@ -17,17 +17,17 @@ function playRound(playerSelection,computerSelection){
             if(cS == "scissors"){
                 return "Draw! ";
             }else if(cS == "paper"){
-                return "You Win!!";
+                return "You Win!! Scissors Beats Paper";
             }else{
-                return "Computer Wins!" ;
+                return "Computer Wins! Rock Beats Scissors" ;
             }
         case "paper":
             if(cS == "scissors"){
-                return "Computer Wins!";
+                return "Computer Wins! Scissors Beats Paper";
             }else if(cS == "paper"){
                 return "Draw!";
             }else{
-                return "You Win!!";
+                return "You Win!! Paper Beats Rock.";
             }                
         default:
             console.log("Something's Wrong");    
@@ -61,12 +61,18 @@ function playerSelect(){
         case "scissors":
             return "scissors";
         default:
-            alert("Again!");
+            alert("Again!Only include one of the choices. Dont input number and spaces Also.");
             return playerSelect();
         }
 }
-let playerSelection = playerSelect();
-let computerSelection = computerPlay();
 
-console.log(playRound(playerSelection,computerSelection));
+function game(){
+   for(let round = 1;round <= 5;round++){
+    let playerSelection = playerSelect();
+    let computerSelection = computerPlay();
+    console.log(playRound(playerSelection,computerSelection));
+   }
+}
+
+game();
 
