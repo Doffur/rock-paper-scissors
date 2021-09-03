@@ -60,9 +60,6 @@ function playerSelect(){
             return "paper";
         case "scissors":
             return "scissors";
-        default:
-            alert("Again!Only include one of the choices. Dont input number and spaces Also.");
-            return playerSelect();
         }
 }
 
