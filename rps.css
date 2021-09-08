@@ -1,0 +1,77 @@
+body{
+  text-align: center;
+  font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+}
+.hide{
+  display: none;
+}
+.margin-top{
+  margin-top: 7rem;
+}
+
+#proceed{
+  margin-top: 17rem;
+}
+#startbutton{
+  padding: 2rem 5rem;
+  border-radius: 2rem;
+}
+.picked{
+  display: inline-block;
+  margin:auto;  
+  background-color: black;
+  padding: 34px;
+  width: 50%;
+  color: white;
+  letter-spacing: 5px;
+}
+.chosed{
+  color: black;
+  height: 20px;
+  width: 100px;
+  padding: 10px;
+  background-color: white;
+}
+.score{
+  font-size: 25px;
+  padding: 1%;
+}
+.flex-container {
+  display: flex;
+  align-items: stretch;
+
+}
+.flex-container > div {
+  text-align: center;
+
+}
+.select{
+  border: .4rem solid black;
+  border-radius: 2rem;
+  margin: 1rem;
+  font-size: 1.5rem;
+  padding: 1rem .5rem;
+  transition: all 0.07s ease;
+  width: 10rem;
+  text-align: center;
+  color: white;
+  background-color: black;
+  text-shadow: 0 0 .5rem black;
+}
+.select:hover{
+  background-color: red;
+}
+
+
+.result{
+  margin:auto;
+  font-size: 40px;
+  width: 50%;
+  padding: 29px;
+  height: 150px;
+  border: 5px solid black;
+}
+
+#choices{
+  background-color: white;
+}

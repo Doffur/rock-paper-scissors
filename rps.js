@@ -1,33 +1,40 @@
-console.log("Hello World");
+const start = document.querySelector('#proceed');
+const main = document.querySelector('#mainCon');
+let computer = document.getElementById('computerpts');
+let player = document.getElementById('playerpts');
+let computerP = document.getElementById('Cpick');
+let playerP = document.getElementById('Ppick');
+let annouce = document.getElementById('winner');
+
 function playRound(playerSelection,computerSelection){
     let pS = playerSelection;
     let cS = computerSelection;
-    console.log("You: "+ pS);
-    console.log("Computer: "+ cS);
+    computerP.textContent = cS;
+    playerP.textContent = pS;
     switch(pS){
         case "rock":
             if(cS == "scissors"){
-                return ["You Win!! Rock Beats Scissors","player"];
+                return "player";
             }else if(cS == "paper"){
-                return ["Computer Wins! Paper Beats Rock","computer"] ;
+                return "computer";
             }else{
-                return ["Draw!","both"];
+                return "both";
             }
         case "scissors":
-            if(cS == "scissors"){
-                return ["Draw!","both"];
+            if(cS == "rock"){
+                return "computer";
             }else if(cS == "paper"){
-                return ["You Win!! Scissors Beats Paper","player"];
+                return "player";
             }else{
-                return ["Computer Wins! Rock Beats Scissors","computer"];
+                return "both";
             }
         case "paper":
             if(cS == "scissors"){
-                return ["Computer Wins! Scissors Beats Paper","computer"];
-            }else if(cS == "paper"){
-                return ["Draw!","both"];
+                return "computer";
+            }else if(cS == "rock"){
+                return "player";
             }else{
-                return ["You Win!! Paper Beats Rock.","player"];
+                return "both";
             }                
         default:
             console.log("Something's Wrong");    
@@ -50,51 +57,66 @@ function computerPlay(){
     }
 
 }
-function playerSelect(){
-    let ask = prompt("Rock,Paper,Scissors:");
-    ask = ask.toLowerCase();
-     switch(ask){
-        case "rock":
-            return "rock";
-        case "paper":
-            return "paper";
-        case "scissors":
-            return "scissors";
-        }
+function playerSelect(the_id){
+    var playerSel = the_id;
+    playerSel = playerSel.toLowerCase();
+    return playerSel;
 }
 
-function game(){
-   let player = 0;
-   let computer = 0;
-   for(let round = 1;round <= 5;round++){
-    let playerSelection = playerSelect();
-    let computerSelection = computerPlay();
+function game(e){
+  
+    let point = 1;
+    let result = document.querySelector('.result');
+    let text = document.createElement('p');
+    let computerPts = parseInt(computer.firstChild.nodeValue);
+    let playerPts = parseInt(player.firstChild.nodeValue);
+
+    let playerSelection = playerSelect(e.target.id);
+    let computerSelection = computerPlay(); 
     let score = playRound(playerSelection,computerSelection);
-    console.log(score[0]);
-    if(score[1] === "player"){
-        console.log("Player gets a point.");
-        player += 1;
-     }else if(score[1] === "computer"){
-        console.log("Computer gets a point.");
-        computer += 1;
-     }else{
-        console.log("Both players gets a point.");
-        player += 1;
-        computer += 1;
-     }
-    }
-    if(player > computer){
-        console.log(`Winner! You with ${player} points against computer with ${computer} points.`);
-    }
-    else if(player < computer){
-        console.log(`Winner! Computer with ${computer} points against you with ${player} points.`);
-    }else{
-        console.log(`Draw with the ${player} points each`);
-    }
 
+
+    if(computerPts < 5 && playerPts < 5){
+        if(result.hasChildNodes()){
+            result.innerHTML = '';
+        }
+        console.log(score);
+        if(score === "player"){
+            text.textContent  = "You Win!! you get a point";
+            result.appendChild(text);
+            console.log("Player gets a point.");
+            player.textContent = playerPts + point;
+         }else if(score === "computer"){
+            text.textContent  = "Computer Wins!! Computer you get a point";
+            result.appendChild(text);
+            console.log("Computer gets a point.");
+            computer.textContent = computerPts + point;
+         }else{
+            text.textContent  = "Draw!!! each players gets a point.";
+            result.appendChild(text);
+            console.log("Draw!!! players gets a point.");
+            player.textContent = playerPts + point;
+            computer.textContent = computerPts + point;
+         }
+    }else{
+        main.style.display = "none";
+        annouce.style.display  = "block";
+        if(playerPts > computerPts){
+            annouce.textContent = `Winner! You with ${playerPts} points against computer with ${computerPts} points.`;
+        }
+        else if(playerPts < computerPts){
+            annouce.textContent = `Winner! Computer with ${computerPts} points against you with ${playerPts} points.`;
+        }else{
+            annouce.textContent = `Draw with the ${playerPts} points each`;
+        }
+    }
+}
+
+function showHide(){
+    main.style.display = "block";
+    start.style.display = "none";
 }
 
 
-
-game();
-
+var g = document.querySelectorAll(".select");
+g.forEach(item => item.addEventListener('click',game));

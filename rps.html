@@ -4,11 +4,42 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" typ="text/css" href="rps.css">
     <title>Document</title>
-
 </head>
-<body>
+<body> 
+  <div id = "proceed" >
+    <h3>ROCK PAPER SCISSORS</h3>
+    <button id ="startbutton" onclick="showHide()">START</button>
+  </div>
+  <div id ="mainCon" class = "hide margin-top">
+     
 
+      <div class = "flex-container picked"> 
+        <div id="computerpts" class="score" style ="flex-grow: 1" >0</div>
+        <div id="Cpick" class="chosed" style ="flex-grow: 2" ></div>
+        <div style ="flex-grow: 1; padding-top: 2%;" >: Computer</div>
+        <div style ="flex-grow: 1; padding-top: 2%;" >|</div>
+        <div style ="flex-grow: 1; padding-top: 2%;" > You :</div> 
+        <div id="Ppick" class="chosed" style ="flex-grow: 2" ></div>
+        <div id="playerpts" class="score" style ="flex-grow: 1  " >0</div>
+      </div>
+
+
+      <div class = "result"></div>
+
+      <div id ="choices">
+        <button id = "rock"  class = "select" value ="rock">Rock</button>
+        <button id = "paper" class = "select" value ="paper">Paper</button>
+        <button id = "scissors" class = "select" value ="scissors">Scissors</button>
+      </div>
+  </div>
+  <div id="winner" class = "hide margin-top"></div>
+
+ 
+    
+  
+ 
     
   <script src="rps.js"></script>  
 </body>
